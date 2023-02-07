@@ -78,4 +78,4 @@ server.add_url_rule(rule='/chatrest/wxpublic/',  # WeRoBot 挂载地址
 
 # flask 入口模式
 if __name__ == '__main__':
-    server.run(debug=True, host='0.0.0.0', port=8080)
+    server.run(debug=True, host='0.0.0.0', port=8081)
