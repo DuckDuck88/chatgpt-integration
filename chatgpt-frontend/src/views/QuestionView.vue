@@ -15,7 +15,7 @@
         <h3>历史请求与回答</h3>
         <ul>
           <li v-for="item in history" :key="item.question">
-            {{ item.question }} - {{ item.answer }}
+            Human:{{ item[2] }}<br>Ai:{{ item[3] }}
           </li>
         </ul>
       </div>
@@ -34,6 +34,15 @@ export default {
       answer: '',
       history: [],
     }
+  },
+
+  mounted() {
+    this.$axios.get('/chathistory', {headers: {'Content-Type': 'application/json'}}).then(response => {
+      this.history = response.data.reply;
+      console.log('历史记录', response.data.reply);
+    }).catch(error => {
+      console.log(error);
+    });
   },
   methods: {
     sendQuestion() {
