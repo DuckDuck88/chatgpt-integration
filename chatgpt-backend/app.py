@@ -2,8 +2,8 @@
 # load_config()
 # server.config.from_mapping(conf())
 # bot = create_bot('openAI')
-
 from flask import Flask, request, render_template
+from flask_cors import CORS
 from werobot.contrib.flask import make_view
 
 from channel.web.web_channel import WebChannel
@@ -15,6 +15,7 @@ from thirdapp.wx_public_admin.wx_public_admin import wxrobot
 
 server = Flask(__name__)
 server.config.from_mapping(conf())
+CORS(server, resources={r"/*": {"origins": "*"}})
 
 # 实例化各个 channel
 web_channel = WebChannel.get_instance(WebChannel)
@@ -38,7 +39,8 @@ def chat_replay_html():
         # 发送消息
         return web_channel.handle_html(request)
 
-@server.route('/chathistory', methods=['GET']) 
+
+@server.route('/chathistory', methods=['GET'])
 def get_web_history():
     return web_channel.show_history(request)
 
