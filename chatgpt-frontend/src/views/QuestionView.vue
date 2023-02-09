@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="container">
+    <div class="container" style="display: flex;">
       <el-input type="textarea" :autosize="{ minRows: 2}" v-model="question" placeholder="请输入问题"/>
       <el-button @click="submitQuestion" type="primary">提交</el-button>
     </div>
