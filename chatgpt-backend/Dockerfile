@@ -1,6 +1,6 @@
 FROM python:3.9
 
-WORKDIR /chatgpt-web
+WORKDIR /chatgpt-backend
 
 COPY ./requirements.txt ./requirements.txt
 

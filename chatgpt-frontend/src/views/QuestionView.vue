@@ -24,7 +24,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 
 export default {
   name: 'app',
@@ -45,17 +44,6 @@ export default {
     });
   },
   methods: {
-    sendQuestion() {
-      const response = axios.post('http://127.0.0.1:8081/chat2', {
-        question: this.question,
-      })
-      const {data} = response
-      this.answer = data.answer
-      this.history.unshift({
-        question: this.question,
-        answer: this.answer,
-      })
-    },
     submitQuestion() {
       const data = {
         "question": this.question
